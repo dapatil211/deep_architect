@@ -175,8 +175,8 @@ def dropout(h_keep_prob):
             def dropped_inputs():
                 return tf.nn.dropout(inputs, 1 - self.rate, seed=self.seed)
 
-            output = tf_utils.smart_cond(
-                training, dropped_inputs, lambda: array_ops.identity(inputs))
+            output = tf_utils.smart_cond(training, dropped_inputs,
+                                         lambda: array_ops.identity(inputs))
             return output
 
         def compute_output_shape(self, input_shape):
@@ -219,10 +219,10 @@ def global_pool2d():
 def flatten():
 
     def compile_fn(di, dh):
-        flatten = tf.keras.layers.Flatten()
+        flatten_op = tf.keras.layers.Flatten()
 
         def forward_fn(di, is_training=True):
-            return {'out': flatten(di['in'])}
+            return {'out': flatten_op(di['in'])}
 
         return forward_fn
 
