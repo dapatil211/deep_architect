@@ -1,0 +1,5 @@
+{
+    "num_evaluations": 100,
+    "searcher_filename": "searcher_state.json",
+    "reset_eval": false
+}

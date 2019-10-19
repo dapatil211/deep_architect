@@ -1,0 +1,13 @@
+{
+    "location": "dev.benchmark.component_lib.evaluator.tpu_estimator_classification.TPUEstimatorEvaluator",
+    "kw_args": {
+        "data_dir": "/data/cifar10",
+        "max_num_training_epochs": 600,
+        "optimizer_type": "sgd_mom",
+        "batch_size": 256,
+        "lr_decay_method": "cosine",
+        "init_lr": 0.024,
+        "weight_decay": 0.0005,
+        "use_tpu": false
+    }
+}

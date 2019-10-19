@@ -1,0 +1,8 @@
+{
+    "distribution_setting": "single_machine",
+    "mongo_host": "localhost",
+    "mongo_port": "27017",
+    "single_machine": {
+        "num_workers": 1
+    }
+}

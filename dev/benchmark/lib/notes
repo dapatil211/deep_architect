@@ -1,0 +1,86 @@
+
+command line args:
+    'ss_location',
+    'se_location',
+    'eval_location',
+    'search_name',
+
+json schema for experiment config:
+{
+    'search_folder',
+    'searcher_filename',
+    'data_dir',
+    'distribution_setting',
+    'num_evaluations',
+
+optional:
+    'save_every',
+    'bucket',
+    'eval_kw_args',
+    'ss_kw_args',
+    'se_kw_args',
+    'num_workers'
+}
+
+{
+    searcher_name: xsasxsada,
+    kw_args: {
+        a: 11
+        b: 22
+
+    }
+}
+
+exp_config:{
+    'save_every': int (optional),
+    'num_evaluations': int (required)
+    'searcher_filename': str (optional)
+    "pretrain_budget"
+}
+
+eval_config:{
+    add reset param
+    tpu_info
+}
+
+run_config:{
+    'distribution_setting': str
+    'mongo_host':
+    'mongo_port':
+    'kubernetes': {
+        'root_dir':
+
+        'master': {
+            yaml_file:
+            env_vars:{
+                IMAGE_ID:
+                JOB_NAME:
+                'bucket'
+            }
+        },
+        'workers': [
+            {
+                yaml_file:
+                env_vars:{
+                    NUM_JOBS:
+                    IMAGE_ID:
+                    'bucket'
+                }
+            }
+            {
+                yaml_file:
+                env_vars:{
+                    NUM_JOBS:
+                    IMAGE_ID:
+                    JOB_NAME:
+                    'bucket'
+                }
+            }
+
+        ]
+
+    }
+    'single_machine': {
+        'num_workers':
+    },
+}

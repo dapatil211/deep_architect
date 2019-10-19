@@ -1,0 +1,6 @@
+{
+    "location": "dev.benchmark.component_lib.searcher.fixed_searcher.FixedSearcher",
+    "kw_args": {
+        "filename": "eval_arch_configs.json"
+    }
+}

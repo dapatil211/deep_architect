@@ -1,0 +1,31 @@
+{
+    "distribution_setting": "kubernetes",
+    "mongo_host": "mongodb-1-servers-vm-0",
+    "mongo_port": "27017",
+    "bucket": "deep_architect",
+    "kubernetes": {
+        "root_dir": "/darch",
+        "master": {
+            "yaml_file": "dev/benchmark/configs/run/k8s_yaml/master.yaml",
+            "env_vars": {
+                "IMAGE_ID": "gcr.io/deeparchitect-219016/darch"
+            }
+        },
+        "workers": [
+            {
+                "yaml_file": "dev/benchmark/configs/run/k8s_yaml/worker_permanent.yaml",
+                "env_vars": {
+                    "NUM_JOBS": "2",
+                    "IMAGE_ID": "gcr.io/deeparchitect-219016/darch"
+                }
+            },
+            {
+                "yaml_file": "dev/benchmark/configs/run/k8s_yaml/worker_preemptible.yaml",
+                "env_vars": {
+                    "NUM_JOBS": "0",
+                    "IMAGE_ID": "gcr.io/deeparchitect-219016/darch"
+                }
+            }
+        ]
+    }
+}
