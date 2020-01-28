@@ -645,6 +645,7 @@ class Module(Addressable):
         the search space are fully specified. See also: :func:`forward`.
         """
         if not self._is_compiled:
+            print(self.get_name())
             self._compile()
             self._is_compiled = True
         self._forward()
@@ -967,7 +968,8 @@ def get_unassigned_independent_hyperparameters(outputs):
             Ordered set of hyperparameters that are currently present in the
             graph and not have been assigned a value yet.
     """
-    assert not is_specified(outputs)
+    if is_specified(outputs):
+        return iter(())
     unassigned_indep_hs = OrderedSet()
     for h in get_all_hyperparameters(outputs):
         if not isinstance(

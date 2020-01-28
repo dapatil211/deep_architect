@@ -167,8 +167,8 @@ def hyperparameter_aggregator(name_to_hyperp, scope=None, name=None):
 
 
 def get_hyperparameter_aggregators(outputs):
-    co.get_modules_with_cond(
-        outputs, lambda m: isinstance(m, HyperparameterAggregator))
+    co.get_modules_with_cond(outputs,
+                             lambda m: isinstance(m, HyperparameterAggregator))
 
 
 def substitution_module(name,
@@ -698,22 +698,16 @@ def siso_sequential(io_lst):
 def buffer_io(inputs, outputs):
     buffered_inputs = {}
     for name, ix in iteritems(inputs):
-        if isinstance(ix.get_module(), SubstitutionModule):
-            b_inputs, b_outputs = identity()
-            b_outputs['out'].connect(ix)
-            buffered_ix = b_inputs['in']
-        else:
-            buffered_ix = ix
+        b_inputs, b_outputs = identity()
+        b_outputs['out'].connect(ix)
+        buffered_ix = b_inputs['in']
         buffered_inputs[name] = buffered_ix
 
     buffered_outputs = {}
     for name, ox in iteritems(outputs):
-        if isinstance(ox.get_module(), SubstitutionModule):
-            b_inputs, b_outputs = identity()
-            ox.connect(b_inputs['in'])
-            buffered_ox = b_outputs['out']
-        else:
-            buffered_ox = ox
+        b_inputs, b_outputs = identity()
+        ox.connect(b_inputs['in'])
+        buffered_ox = b_outputs['out']
         buffered_outputs[name] = buffered_ox
 
     return buffered_inputs, buffered_outputs
